@@ -1,19 +1,26 @@
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
+//認証用のプロバイダーを作る
 const Lesson4_1 = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleLogin = () => {};
+  const { user, login, logout } = useAuth();
+
+  const handleLogin = () => {
+    login({ id: "1", username, email });
+  };
 
   return (
     <div>
-      <div>
-        <p>ログイン済み:</p>
-        <button>ログアウト</button>
-      </div>
-
-      <div>
+      {user ? (
+        <div>
+          <p>ログイン済み:</p>
+          <button onClick={logout}>ログアウト</button>
+        </div>  
+      ) : (     
+        <div>
         <input
           type="text"
           placeholder="Username"
@@ -28,6 +35,7 @@ const Lesson4_1 = () => {
         />
         <button onClick={handleLogin}>ログイン</button>
       </div>
+      )}
     </div>
   );
 };
