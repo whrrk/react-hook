@@ -24,7 +24,7 @@ async function getData(url: string) {
 async function getBio() {
   // Add a fake delay to make waiting noticeable.
   await new Promise((resolve) => {
-    setTimeout(resolve, 500);
+    setTimeout(resolve, 2500);
   });
 
   return `The Beatles were an English rock band, 
